@@ -1,6 +1,5 @@
 
-# Respawn the script if it dies
+# Respawn the script if it dies, I can put this into the setupServer.sh
 http://superuser.com/questions/507576/how-to-automatically-restart-a-linux-background-process-if-it-fails 
-in /etc/inittab, put
-# Run my stuff
-myprocess:2345:respawn:/bin/myprocess
+in /etc/inittab, put:
+myprocess:2345:respawn:/bin/myprocess # Run my stuff
