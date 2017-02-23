@@ -1,0 +1,6 @@
+
+# Respawn the script if it dies
+http://superuser.com/questions/507576/how-to-automatically-restart-a-linux-background-process-if-it-fails 
+in /etc/inittab, put
+# Run my stuff
+myprocess:2345:respawn:/bin/myprocess
