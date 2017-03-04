@@ -7,6 +7,7 @@
 SERVER_SCRIPTS_DIR=/home/kyle/projects/beasley_weather_station/server # the place where we store setupServer.sh and server.sh
 BACKUP_SCRIPT=$SERVER_SCRIPTS_DIR/backupDailyWeather.sh
 SERVER_SCRIPT=$SERVER_SCRIPTS_DIR/server.sh
+SERVER_USER=kyle
 
 # exit at the first failure
 set -e
@@ -40,11 +41,11 @@ fi
 # 2. create cronjob for the script that watches (iwatch) the filesystem for new database pushes from the bbg
 # ex. * * * * 0-7 date >> ~/projects/date.txt
 echo "Setup cron jobs for backing up data and merging new databases (filesystem watcher)..."
-crontab -r # remove current/older cron file
+#crontab -r # remove current/older cron file
 #crontab -l > newCronFile                               # store current crontab
 #echo "00 12 * * 0-7 $BACKUP_SCRIPT" >> newCronFile     # add new line into the cron file: 1.
 #echo "@hourly * * * 0-7 $SERVER_SCRIPT" >> newCronFile # add new line into the cron file: 2.
 #crontab newCronFile                                    # install new cron file
 #rm newCronFile
-crontab serverCronTabFile.cron
+crontab -u $SERVER_USER serverCronTabFile.cron
 
