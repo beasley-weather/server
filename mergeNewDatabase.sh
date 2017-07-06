@@ -9,8 +9,8 @@ echo "About to merge master.db and newPush.sb..."
 # merge master.db + newPush.db = master.db
 
 # create 2 test databases
-../data-generator/data_generator.py -p 24 ../data-generator/master.db temp sin
-../data-generator/data_generator.py -p 24 ../data-generator/newPush.db wind square
+../data-generator/data_generator.py -p 24 -t 0 ../data-generator/master.db temp sin
+../data-generator/data_generator.py -p 24 -t 25 ../data-generator/newPush.db wind square
 cp ../data-generator/master.db .
 cp ../data-generator/newPush.db .
 
