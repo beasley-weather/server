@@ -9,10 +9,13 @@ echo "About to merge master.db and newPush.sb..."
 # merge master.db + newPush.db = master.db
 
 # create 2 test databases
-../data-generator/data_generator.py -p 24 -t 0 ../data-generator/master.db temp sin
-../data-generator/data_generator.py -p 24 -t 25 ../data-generator/newPush.db wind square
-cp ../data-generator/master.db .
-cp ../data-generator/newPush.db .
+
+#../data-generator/data_generator.py -p 24 -t 0 ../data-generator/master.db temp sin
+#../data-generator/data_generator.py -p 24 -t 25 ../data-generator/newPush.db wind square
+#cp ../data-generator/master.db .
+#cp ../data-generator/newPush.db .
+../data-generator/data_generator.py -p 24 -t 0 ./master.db temp sin
+../data-generator/data_generator.py -p 24 -t 25 ./newPush.db wind square
 
 # Run like this: 
 sqlite3 master.db < sqlite3ScriptMerge.sql
