@@ -20,5 +20,7 @@
 # For more information see the manual pages of crontab(5) and cron(8)
 #
 # m h  dom mon dow   command
-00 12 * * 0-7 /home/kyle/projects/beasley_weather_station/server/backupDailyWeather.sh
-00 * * * 0-7 /home/kyle/projects/beasley_weather_station/server/startiwatch.sh
+00 12 * * 0-7 /home/badger/badger/beasley-weather-station/server/scripts/backupDailyWeather.sh
+00 * * * 0-7 /home/badger/badger/beasley-weather-station/server/scripts/startiwatch.sh
+@reboot /home/badger/badger/beasley-weather-station/server/scripts/startiwatch.sh
+55 * * * 0-7 /home/badger/beasley-weather-station/server/scripts/pushIndexHTMLToPublicWebServer.sh

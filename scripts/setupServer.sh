@@ -4,9 +4,11 @@
 # connected into the internet into the 
 # "Beasley Weather Station Database and Server"
 
-SERVER_SCRIPTS_DIR=/home/badger/beasley-weather-station/server/scripts
-BACKUP_SCRIPT=$SERVER_SCRIPTS_DIR/backupDailyWeather.sh
 SERVER_USER=badger
+SERVER_SCRIPTS_DIR=/home/$SERVER_USER/beasley-weather-station/server/scripts
+SERVER_ETC_DIR=/home/$SERVER_USER/beasley-weather-station/server/etc
+BACKUP_SCRIPT=$SERVER_SCRIPTS_DIR/backupDailyWeather.sh
+SERVER_CRON_TAB_FILE=serverCronTabFile.cron
 
 # exit at the first failure
 set -e
@@ -51,5 +53,5 @@ fi
 # 2. create cronjob for the script that watches (iwatch) the filesystem for new database pushes from the bbg
 # ex. * * * * 0-7 date >> ~/projects/date.txt
 echo -e "\nSetup cron jobs for backing up data and merging new databases (filesystem watcher)..."
-crontab -u $SERVER_USER serverCronTabFile.cron
+sudo crontab -u $SERVER_USER $SERVER_ETC_DIR/$SERVER_CRON_TAB_FILE
 
