@@ -4,6 +4,7 @@ echo -e "\nAbout to merge master.db and newPush.sb..."
 
 SERVER_USER=kyle
 STATION_ROOT_DIR=/home/$SERVER_USER/beasley-weather-station
+WEEWX_CONFIG_FILE_DIR=$STATION_ROOT_DIR/beasley-weather-station
 SERVER_SCRIPTS_DIR=$STATION_ROOT_DIR/server/scripts
 SERVER_DB_DIR=$STATION_ROOT_DIR/server/db
 DATA_GENERATOR_SCRIPT=$STATION_ROOT_DIR/data-generator/data_generator.py
@@ -35,13 +36,14 @@ sqlite3 master.db < sqlite3ScriptMerge.sql
 ## Directory in which the database files are located
 #        SQLITE_ROOT = /var/lib/weewx
 # move master database to the location specified in weewx.conf
-cp -v $SERVER_DB_DIR/master.db /var/lib/weewx/weewx.sdb
+sudo cp -v $SERVER_DB_DIR/master.db /var/lib/weewx/weewx.sdb
 
 # use the new weewx.sdb file and generate a new "report" (index.html)
 # The [[FTP]] tags in the weewx.conf are setup so that the newly
 # generated report is sent straight to the server which dishes out
 # the webpages to the public 
-wee_reports weewx.conf
+# xxx KA there is an issue with this next line!
+#sudo wee_reports $WEEWX_CONFIG_FILE_DIR/weewx.conf
 
 echo -e "\nFinished merging master.db and newPush.db"
 
