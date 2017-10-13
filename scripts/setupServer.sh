@@ -34,12 +34,12 @@ sudo apt-get install python-configobj python-cheetah python-serial python-usb
 
 # get weewx from the internet and install it
 echo -e "\nGoing to download and install weewx, but only if I don't find it in your downloads directory..."
-if [ ! -f ~/Downloads/weewx_3.6.2-1_all.deb ];
+if [ ! -f /home/badger/Downloads/weewx_3.6.2-1_all.deb ];
 	then
 	wget http://weewx.com/downloads/released_versions/weewx_3.6.2-1_all.deb
     mkdir -p /home/badger/Downloads
 	mv weewx_3.6.2-1_all.deb /home/badger/Downloads/weewx_3.6.2-1_all.deb
-	sudo dpkg -i ~/Downloads/weewx_3.6.2-1_all.deb 
+	sudo dpkg -i /home/badger/Downloads/weewx_3.6.2-1_all.deb
 fi
 
 # Configure and run weewx and serve the information from master.db to the public
