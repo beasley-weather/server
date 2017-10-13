@@ -37,7 +37,8 @@ echo -e "\nGoing to download and install weewx, but only if I don't find it in y
 if [ ! -f ~/Downloads/weewx_3.6.2-1_all.deb ];
 	then
 	wget http://weewx.com/downloads/released_versions/weewx_3.6.2-1_all.deb
-	mv weewx_3.6.2-1_all.deb ~/Downloads/weewx_3.6.2-1_all.deb 
+    mkdir -p /home/badger/Downloads
+	mv weewx_3.6.2-1_all.deb /home/badger/Downloads/weewx_3.6.2-1_all.deb
 	sudo dpkg -i ~/Downloads/weewx_3.6.2-1_all.deb 
 fi
 
